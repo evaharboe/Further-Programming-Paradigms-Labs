@@ -4,29 +4,20 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/fact.cpp \
-../src/helloWorld.cpp \
-../src/hypothenuse.cpp \
-../src/initials.cpp \
-../src/main.cpp 
+../main.cpp \
+../operations.cpp 
 
 CPP_DEPS += \
-./src/fact.d \
-./src/helloWorld.d \
-./src/hypothenuse.d \
-./src/initials.d \
-./src/main.d 
+./main.d \
+./operations.d 
 
 OBJS += \
-./src/fact.o \
-./src/helloWorld.o \
-./src/hypothenuse.o \
-./src/initials.o \
-./src/main.o 
+./main.o \
+./operations.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/%.o: ../src/%.cpp src/subdir.mk
+%.o: ../%.cpp subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
 	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
@@ -34,10 +25,10 @@ src/%.o: ../src/%.cpp src/subdir.mk
 	@echo ' '
 
 
-clean: clean-src
+clean: clean--2e-
 
-clean-src:
-	-$(RM) ./src/fact.d ./src/fact.o ./src/helloWorld.d ./src/helloWorld.o ./src/hypothenuse.d ./src/hypothenuse.o ./src/initials.d ./src/initials.o ./src/main.d ./src/main.o
+clean--2e-:
+	-$(RM) ./main.d ./main.o ./operations.d ./operations.o
 
-.PHONY: clean-src
+.PHONY: clean--2e-
 
